@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import "./App.css"
+import "./index.css"
+// import ReactInfiniteScroll from "./1-react-infinite-scroll"
+import HamburgerMenu from "./3-hamburger-menu/HamburgerMenu"
+//import TailwindPlayground from "./2-tailwind-playground";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    //<TailwindPlayground />;
+    // <ReactInfiniteScroll />
+    <HamburgerMenu />
+  )
 }
 
-export default App;
+export default App
