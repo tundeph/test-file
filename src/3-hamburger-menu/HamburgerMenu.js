@@ -11,9 +11,12 @@ const HamburgerMenu = () => {
   }
 
   return (
-    <div className="HamburgerMenu">
-      <nav>
-        <div className="title"> Logo </div>
+    <nav>
+      <span className="nav-contents">
+        <div className="title">
+          {" "}
+          <h2> Logo </h2>
+        </div>
         <div onClick={handleMenu} className={open ? "hamburger-close" : "hamburger"}>
           <span className="bar1"></span>
           <span className="bar2"></span>
@@ -25,8 +28,8 @@ const HamburgerMenu = () => {
           <li>About Us</li>
           <li>FAQs</li>
         </ul>
-      </nav>
-    </div>
+      </span>
+    </nav>
   )
 }
 
