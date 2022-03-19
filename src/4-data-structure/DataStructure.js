@@ -2,16 +2,83 @@ import React from "react"
 
 const DataStructure = () => {
   //------------------------
-  //string reversal algorithm
+  //capitalize each word in a sentence
 
-  const stringReversal = (str) => {
-    return str.split("").reverse().join("")
+  const capitalizeEach = (str) => {
+    const stringArray = str.split(" ").reduce((acc, item) => {
+      acc.push(item.slice(0, 1).toUpperCase() + item.slice(1, item.length))
+      return acc
+    }, [])
+    return stringArray.join(" ")
   }
+  console.log(capitalizeEach("I like cats"))
+  //------------------------
+  // fizzbuzz algorithm to console.log fizz, buzz and fizzbuzz for items divisible by 3,5 and 5&5 respectively
 
-  console.log(stringReversal("Tunde"))
+  // const fizzBuzz = (n) => {
+  //   const arr = []
+  //   for (let i = 1; i <= n; i++) {
+  //     arr.push(
+  //       i % 3 === 0 && i % 5 === 0
+  //         ? "fizzbuzz"
+  //         : i % 5 === 0
+  //         ? "buzz"
+  //         : i % 3 === 0
+  //         ? "fizz"
+  //         : i
+  //     )
+  //   }
+  //   return arr
+  // }
+  // console.log(fizzBuzz(25))
+
+  //------------------------
+  //maxChar Algorithm. Find the character with the highest occurence in a string
+
+  // const maxChar = (str) => {
+  //   const obj = {}
+  //   let maxChar = ""
+  //   let maxCount = 0
+
+  //   for (let i = 0; i < str.length; i++) {
+  //     obj[str[i]] ? (obj[str[i]] += 1) : (obj[str[i]] = 1)
+  //     if (obj[str[i]] > maxCount) {
+  //       maxChar = str[i]
+  //       maxCount = obj[str[i]]
+  //     }
+  //   }
+  //   return maxChar
+  // }
+
+  // console.log(maxChar("eennnrffffffdg"))
+
+  //------------------------
+  //reverse an integer
+  // const reverseInteger = (numb) => {
+  //   const reversed = Math.abs(numb).toString().split("").reverse().join("")
+  //   return numb < 0 ? reversed * -1 : reversed
+  // }
+  // console.log(reverseInteger(-256789))
+
+  //------------------------
+  // reverse a string and compare whether it is the same as the original
+  //   const palindrome = (str) => {
+  //     return str.toLowerCase() === str.toLowerCase().split("").reverse().join("")
+  //   }
+
+  //   console.log(palindrome("Madam"))
+
+  //------------------------
+  //string reversal algorithm
+  //
+  // const stringReversal = (str) => {
+  //   return str.split("").reverse().join("")
+  // }
+  // console.log(stringReversal("Tunde"))
 
   //-------------------------
-  //-----chunk algorithm
+  // chunk algorithm
+  //
   // const chunk = (arr, size) => {
   //   const newArr = []
   //   for (let i = 0; i < arr.length; i++) {
@@ -33,7 +100,7 @@ const DataStructure = () => {
   // console.log(chunk(arr, siz))
 
   //--------------------------------
-  //----to sort by the number of occurrence of an element in an array
+  //to sort by the number of occurrence of an element in an array
   //['Foo', 'Bar', 'Foo', 'Bar', 'Bar', 'Faz', 'Fee']
 
   // const array = ["Foo", "Bar", "Foo", "Bar", "Bar", "Faz", "Fee"]
