@@ -4,14 +4,15 @@ const DataStructure = () => {
   //------------------------
   //capitalize each word in a sentence
 
-  const capitalizeEach = (str) => {
-    const stringArray = str.split(" ").reduce((acc, item) => {
-      acc.push(item.slice(0, 1).toUpperCase() + item.slice(1, item.length))
-      return acc
-    }, [])
-    return stringArray.join(" ")
-  }
-  console.log(capitalizeEach("I like cats"))
+  // const capitalizeEach = (str) => {
+  //   const stringArray = str.split(" ").reduce((acc, item) => {
+  //     acc.push(item.slice(0, 1).toUpperCase() + item.slice(1, item.length))
+  //     return acc
+  //   }, [])
+  //   return stringArray.join(" ")
+  // }
+  // console.log(capitalizeEach("I like cats"))
+
   //------------------------
   // fizzbuzz algorithm to console.log fizz, buzz and fizzbuzz for items divisible by 3,5 and 5&5 respectively
 
