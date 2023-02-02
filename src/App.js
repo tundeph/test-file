@@ -6,7 +6,8 @@ import "./index.css"
 // import TailwindPlayground from "./2-tailwind-playground"
 // import DataStructure from "./4-data-structure/DataStructure"
 // import Rebilly from "./5-rebilly"
-import ReduxToolkit from "./6-redux-toolkit"
+// import ReduxToolkit from "./6-redux-toolkit"
+import SetInterval from "./7-setinterval/set-interval"
 
 function App() {
 	return (
@@ -16,7 +17,8 @@ function App() {
 			{/* <HamburgerMenu /> */}
 			{/* <DataStructure /> */}
 			{/* <Rebilly /> */}
-			<ReduxToolkit />
+			{/* <ReduxToolkit /> */}
+			<SetInterval />
 		</>
 	)
 }
