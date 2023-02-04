@@ -7,33 +7,36 @@ const jwt = require("jsonwebtoken")
 
 app.use(express.json())
 
-const posts = [
-	{ username: "Mo", title: "Post 1" },
-	{ username: "Jay", title: "Post 2" },
-]
+let refreshTokens = []
 
-app.get("/posts", authenticateToken, (req, res) => {
-	console.log("req.user", req.user)
-	res.json(posts.filter((post) => post.username === req.user.user))
+app.post("/token", (req, res) => {
+	const refreshToken = req.body.token
+
+	if (refreshToken === null) return res.sendStatus(401)
+	if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403)
+	jwt.verify(refreshToken, process.env.REFRESH_WEB_TOKEN, (err, user) => {
+		if (err) return res.sendStatus(403)
+		console.log("user", user)
+		const accessToken = generateAccessToken({ user: user.user })
+		res.json(accessToken)
+	})
+})
+
+app.delete("/logout", (req, res) => {
+	refreshTokens = refreshTokens.filter((token) => token != req.body.token)
+	res.sendStatus(204)
 })
 
 app.post("/login", (req, res) => {
 	const user = { user: req.body.username }
-	const accessToken = jwt.sign(user, process.env.ACCESS_WEB_TOKEN)
-	res.json({ accessToken: accessToken })
+	const accessToken = generateAccessToken(user)
+	const refreshToken = jwt.sign(user, process.env.REFRESH_WEB_TOKEN)
+	refreshTokens.push(refreshToken)
+	res.json({ accessToken, refreshToken })
 })
 
-function authenticateToken(req, res, next) {
-	const authHeader = req.headers["authorization"]
-	const token = authHeader && authHeader.split(" ")[1]
-	console.log("token", token)
-	if (token == null) return res.sendStatus(401)
-
-	jwt.verify(token, process.env.ACCESS_WEB_TOKEN, (err, user) => {
-		if (err) return res.sendStatus(403)
-		req.user = user
-		next()
-	})
+function generateAccessToken(user) {
+	return jwt.sign(user, process.env.ACCESS_WEB_TOKEN, { expiresIn: "20s" })
 }
 
 app.listen(4000)
